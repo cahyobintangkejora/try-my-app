@@ -1,0 +1,120 @@
+{% extends 'base.html' %} {% block content %}
+<div class="card card-primary">
+  <div class="card-header">Table Informasi</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="input-group col-3">
+        <input
+          id="search_data_dashboard"
+          class="form-control"
+          placeholder="Search"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-default">
+            <span class="fa fa-search"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <div class="table-responsive">
+        <table
+          id="tabel_data_dashboard"
+          class="table table-striped w-100 text-nowrap table-hover"
+        >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Age</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card card-primary">
+  <div class="card-header">Contoh Ajax</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="input-group col-3">
+        <input
+          id="inp_name"
+          class="form-control"
+          placeholder="Pencarian Nama"
+        />
+        <div class="input-group-append">
+          <button id="btn_search_name" class="btn btn-default">
+            <span class="fa fa-search"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-3" style="border: 1px solid rebeccapurple">
+        Hasil search: <span class="text-red" id="span_result">N/A</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %} {% block script %}
+
+<script>
+  $(() => {
+    fill_tabel_data_dashboard();
+
+    // listener search tabel dashboard
+    $("#search_data_dashboard")
+      .on("keyup", (e) => {
+        if (e.key == "Enter") fill_tabel_data_dashboard();
+      })
+      .next()
+      .on("click", (e) => {
+        fill_tabel_data_dashboard();
+      });
+
+    // listener cari 
+      $('#btn_search_name').on('click', e => {
+          $.ajax({
+              url: "{{ url_for('search_name') }}",
+              data: {
+                  'name': $('#inp_name').val()
+                },
+                success: res => {
+                    messageAlert('s', 'Berhasil');
+                    $('#span_result').html(res);
+                },
+                error: res => {
+                    ajaxErrorHandler(res);
+                }
+            })
+        })
+    });
+
+  function fill_tabel_data_dashboard() {
+    const ajax_options = {
+      url: "{{ url_for('dt_caridata') }}",
+      data: {
+        search: $("#search_data_dashboard").val(),
+      },
+    };
+    const dt_options = {
+      columns: [
+        { data: "id" },
+        { data: "name" },
+        { data: "email" },
+        { data: "age" },
+        { data: "address" }
+      ]
+    };
+    const id_tabel = "tabel_data_dashboard";
+
+    dt_server(id_tabel, ajax_options, dt_options);
+  }
+  
+</script>
+{% endblock script %}

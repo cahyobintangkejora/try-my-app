@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon/ic_RAB</title>
+    <g id="Icon/ic_RAB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M16.8666667,4 L16.8666667,20 L4.98095238,20 C4.3206349,20 3,19.4000001 3,17 C3,14.5999999 3,7.33333325 3,4 L16.8666667,4 Z" id="Vector-1" stroke="#FF0505" stroke-width="2" stroke-dasharray="0,0"></path>
+        <path d="M5.66666667,12.5333333 L14.2,12.5333333 L14.2,14.6666667 L5.66666667,14.6666667 L5.66666667,12.5333333 Z" id="Rectangle-9" fill="#FF0505"></path>
+        <path d="M5.66666667,9.33333333 L14.2,9.33333333 L14.2,11.4666667 L5.66666667,11.4666667 L5.66666667,9.33333333 Z" id="Rectangle-9-Copy" fill="#FF0505"></path>
+        <path d="M5.66666667,15.7333333 L14.2,15.7333333 L14.2,17.8666667 L5.66666667,17.8666667 L5.66666667,15.7333333 Z" id="Rectangle-10" fill="#FF0505"></path>
+        <path d="M16.8666667,18.0909091 C16.8666667,19.6181818 17.9079365,20 18.1619048,20 L21.1333333,20 L21.1333333,8.8 L20.0666667,8.8 L16.8666667,8.8 C16.8666667,10.921212 16.8666667,16.5636364 16.8666667,18.0909091 Z" id="Vector-2" stroke="#FF0505" stroke-width="2" stroke-dasharray="0,0" transform="translate(19.000000, 14.400000) scale(1, -1) rotate(-180.000000) translate(-19.000000, -14.400000) "></path>
+        <path d="M5.66666667,6.13333333 L9.66666667,6.13333333 L9.66666667,8.26666667 L5.66666667,8.26666667 L5.66666667,6.13333333 Z" id="Rectangle-7" fill="#FF0505"></path>
+    </g>
+</svg>

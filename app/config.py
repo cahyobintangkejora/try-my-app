@@ -1,0 +1,1 @@
+SECRET_KEY = 'ini secret key template ya ges'

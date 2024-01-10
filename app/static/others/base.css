@@ -1,0 +1,105 @@
+/* Start Snackbar CSS */
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 100;
+	left: 50%;
+	bottom: 150px;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	position: absolute !important;
+	z-index: 1050;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+
+	to {
+		bottom: 150px;
+		opacity: 1;
+	}
+}
+
+@keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+
+	to {
+		bottom: 150px;
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeout {
+	from {
+		bottom: 150px;
+		opacity: 1;
+	}
+
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		bottom: 150px;
+		opacity: 1;
+	}
+
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
+
+/* End Snackbar CSS */
+
+/* untuk hide default DT processing animation */
+div.dataTables_processing div {
+	display: none;
+}
+
+/* untuk ganti warna select2 multiple */
+.select2-selection__choice {
+	background-color: #007bff !important;
+	border: 1px solid #006fe6 !important;
+}
+
+/* untuk input yg tpenya lov */
+.input-lov {
+	background: #ffe214 !important;
+	cursor: pointer;
+}
+
+/* untuk data table lov */
+table.table-lov td.dataTables_empty {
+	cursor: not-allowed;
+}
+
+.card-404 {
+    width: max-content;
+    max-width: 300px;
+    padding: 0.5rem;
+    background-color: #FBE8E9;
+    border-left: 10px solid #DA1415;
+    border-radius: 6px;
+}

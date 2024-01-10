@@ -1,0 +1,419 @@
+{% extends 'base.html' %} {% block content %}
+<div class="card card-primary">
+  <div class="card-header">Table Kelola Data Karyawan</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-3">
+        <!-- Kolom untuk elemen pencarian -->
+        <div class="input-group">
+          <input
+            id="search_data_dashboard"
+            class="form-control"
+            placeholder="Input Nama yang ingin dicari"
+          />
+          <div class="input-group-append">
+            <button class="btn btn-default">
+              <span class="fa fa-search"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-9 text-right">
+        <!-- Kolom untuk tombol "Tambah" -->
+        <button
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#tambahModal"
+        >
+          Tambah Data
+        </button>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table
+        id="tabel_data_dashboard"
+        class="table table-striped w-100 text-nowrap table-hover"
+      >
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Umur</th>
+            <th>Alamat</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- KUMPULAN MODAL -->
+<!-- Modal Edit -->
+<div
+  class="modal fade"
+  id="editModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Data Karyawan</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Form untuk mengedit data -->
+        <form id="editForm">
+          <div class="form-group">
+            <label for="edit_name">Nama:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="edit_name"
+              name="edit_name"
+              required
+            />
+            <label for="edit_email">Email:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="edit_email"
+              name="edit_email"
+              required
+            />
+            <label for="edit_age">Umur:</label>
+            <input
+              type="number"
+              class="form-control"
+              id="edit_age"
+              name="edit_age"
+              required
+            />
+            <label for="edit_address">Alamat:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="edit_address"
+              name="edit_address"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-warning">
+            Simpan Perubahan
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Tambah -->
+<div
+  class="modal fade"
+  id="tambahModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="tambahModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tambahModalLabel">Tambah Data Karyawan</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="tambahForm">
+          <div class="form-group">
+            <label for="tambah_name">Nama:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tambah_name"
+              name="tambah_name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="tambah_email">Email:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tambah_email"
+              name="tambah_email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="tambah_age">Umur:</label>
+            <input
+              type="number"
+              class="form-control"
+              id="tambah_age"
+              name="tambah_age"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="tambah_address">Alamat:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tambah_address"
+              name="tambah_address"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Tambah</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Konfirmasi Hapus-->
+<div
+  class="modal fade"
+  id="konfirmasiModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="konfirmasiModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="konfirmasiModalLabel">
+          Konfirmasi Penghapusan
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">Apakah Anda yakin ingin menghapus data ini?</div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="konfirmasiTidak"
+          data-dismiss="modal"
+        >
+          Tidak
+        </button>
+        <button type="button" class="btn btn-danger" id="konfirmasiYa">
+          Ya
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %} {% block script %}
+<script>
+  $(() => {
+    fill_tabel_data_dashboard();
+
+    // Mendengarkan event pada kolom pencarian
+    $("#search_data_dashboard")
+      .on("keyup", (e) => {
+        if (e.key == "Enter") fill_tabel_data_dashboard();
+      })
+      .next()
+      .on("click", (e) => {
+        fill_tabel_data_dashboard();
+      });
+
+    // Mendengarkan event pada tombol "Cari"
+    $("#btn_search_name").on("click", (e) => {
+      $.ajax({
+        url: "{{ url_for('search_name') }}",
+        data: {
+          name: $("#inp_name").val(),
+        },
+        success: (res) => {
+          messageAlert("s", "Berhasil");
+          $("#span_result").html(res);
+        },
+        error: (res) => {
+          ajaxErrorHandler(res);
+        },
+      });
+    });
+  });
+
+  // Mengisi data pada tabel data karyawan
+  function fill_tabel_data_dashboard() {
+    const ajax_options = {
+      url: "{{ url_for('dt_caridata') }}",
+      data: {
+        search: $("#search_data_dashboard").val(),
+      },
+    };
+    const dt_options = {
+      columns: [
+        { data: "id" },
+        { data: "name" },
+        { data: "email" },
+        { data: "age" },
+        { data: "address" },
+        {
+          data: null,
+          render: function (data, type, row) {
+            return (
+              '<button class="btn btn-danger btn-sm" onclick="hapusData(' +
+              row.id +
+              ')">Hapus</button>' +
+              '<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal">Edit</button>'
+            );
+          },
+        },
+      ],
+    };
+    const id_tabel = "tabel_data_dashboard";
+    dt_server(id_tabel, ajax_options, dt_options);
+  }
+
+  // Tambah data karyawan ke dalam table
+  $("#tambahForm").submit(function (e) {
+    e.preventDefault();
+    var tambahData = {
+      name: $("#tambah_name").val(),
+      email: $("#tambah_email").val(),
+      age: $("#tambah_age").val(),
+      address: $("#tambah_address").val(),
+    };
+    $.ajax({
+      url: "{{ url_for('insertDataKaryawan') }}",
+      method: "POST",
+      data: tambahData,
+      success: function (res) {
+        // Memuat ulang tabel setelah berhasil menambahkan data
+        fill_tabel_data_dashboard();
+        // Menutup modal tambah
+        $("#tambahModal").modal("hide");
+        // Tampilkan pesan sukses atau error jika perlu
+        messageAlert("s", "Data berhasil ditambahkan");
+      },
+      // eror handling jika gagal
+      error: function (res) {
+        ajaxErrorHandler(res);
+      },
+    });
+  });
+
+  // Menghapus data karyawan pada tabel
+  function hapusData(id) {
+    // Menampilkan modal konfirmasi
+    $("#konfirmasiModal").modal("show");
+
+    // Mengganti fungsi hapus setelah modal konfirmasi muncul
+    $("#konfirmasiYa").on("click", function () {
+      // Menyembunyikan modal konfirmasi
+      $("#konfirmasiModal").modal("hide");
+
+      // Melakukan penghapusan data
+      $.ajax({
+        type: "POST",
+        url: "/delete_data",
+        data: { id: id },
+        success: function (response) {
+          // Handle respons dari server setelah berhasil menghapus data
+          console.log("Data berhasil dihapus:", response.data);
+          // Pesan jika data berhasil dihapus
+          messageAlert("s", "Data berhasil dihapus");
+          // Memuat ulang tabel setelah menghapus data
+          fill_tabel_data_dashboard();
+        },
+        // eror handling jika gagal
+        error: function (error) {
+          console.error("Error saat menghapus data:", error);
+        },
+      });
+    });
+
+    // Menangani penutupan modal jika tombol "Tidak" diklik
+    $("#konfirmasiTidak").on("click", function () {
+      $("#konfirmasiModal").modal("hide");
+    });
+  }
+
+  // Mengedit data Karyawan pada table
+  var currentEditData; // Variabel global untuk menyimpan data yang akan diedit
+  $("#tabel_data_dashboard").on("click", ".btn-warning", function () {
+    // Mendapatkan data baris yang dipilih
+    var data = $("#tabel_data_dashboard")
+      .DataTable()
+      .row($(this).closest("tr"))
+      .data();
+
+    currentEditData = data;
+
+    // Mengisi data pada form edit
+    $("#edit_name").val(data.name);
+    $("#edit_email").val(data.email);
+    $("#edit_age").val(data.age);
+    $("#edit_address").val(data.address);
+
+    $("#editModal").modal("show");
+  });
+
+  // Mendengarkan event pada form edit untuk submit data
+  $("#editForm").submit(function (e) {
+    e.preventDefault();
+
+    // Mendapatkan data dari variabel global
+    var editData = {
+      id: currentEditData.id,
+      name: $("#edit_name").val(),
+      email: $("#edit_email").val(),
+      age: $("#edit_age").val(),
+      address: $("#edit_address").val(),
+    };
+
+    // Meng-handle request AJAX untuk menyimpan perubahan data
+    $.ajax({
+      url: "{{ url_for('editDataKaryawan') }}",
+      method: "POST",
+      data: editData,
+      success: function (res) {
+        // Handle respons dari server setelah berhasil mengedit data
+        console.log("Data berhasil diubah:", res.data);
+        // Pesan jika data berhasil diubah
+        messageAlert("s", "Data berhasil diubah");
+        // Memuat ulang tabel setelah mengedit data
+        fill_tabel_data_dashboard();
+        // Menutup modal edit
+        $("#editModal").modal("hide");
+      },
+      // eror handling jika gagal
+      error: function (error) {
+        console.error("Error saat mengedit data:", error);
+        messageAlert("e", "Gagal mengedit data");
+      },
+    });
+  });
+</script>
+{% endblock script %}

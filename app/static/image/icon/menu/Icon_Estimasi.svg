@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon/Icon_estimasi2</title>
+    <defs>
+        <path d="M22,11 C22,13.544904 21.1175891,16.0110785 19.5031168,17.9783159 C17.8886445,19.9455534 15.6420029,21.2921334 13.1459948,21.7886197 C10.6499868,22.2851059 8.05904681,21.9007774 5.81463844,20.701118 C3.57023007,19.5014587 1.81122236,17.5606963 0.837328137,15.2095116 C-0.136566091,12.8583269 -0.265088693,10.2421963 0.473658765,7.80687497 C1.21240622,5.37155368 2.77271545,3.26772242 4.88872869,1.85384932 C7.00474192,0.439976211 9.54553571,-0.196458888 12.0781889,0.0529850099 C14.6108422,0.302428908 16.978653,1.42231757 18.7781747,3.22183633 M15.7142869,3.92858267 L20.4285727,5.5 L19.5031168,0.0529850099" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="22" height="22" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Icon/Icon_estimasi2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M20,40 C31.045695,40 40,31.045695 40,20 C40,8.954305 31.045695,0 20,0 C8.954305,0 0,8.954305 0,20 C0,31.045695 8.954305,40 20,40 Z" id="Ellipse-2" fill-opacity="0.200000003" fill="#FF9900"></path>
+        <g id="Group-34" transform="translate(9.500000, 9.000000)">
+            <use id="Ellipse-11" stroke="#FF7A00" mask="url(#mask-2)" stroke-width="4" stroke-linecap="round" stroke-dasharray="0,0" xlink:href="#path-1"></use>
+            <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z" id="Ellipse-12" fill="#FF7A00"></path>
+        </g>
+    </g>
+</svg>
