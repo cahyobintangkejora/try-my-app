@@ -17,3 +17,4 @@ Pillow
 terbilang
 blinker
 pyjwt
+Faker
