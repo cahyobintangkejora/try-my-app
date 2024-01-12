@@ -17,7 +17,5 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
 # import view function / controller / route
-
 from app.controller.dashboard import d_dashboard
 from app.controller.kelola import d_kelola
-

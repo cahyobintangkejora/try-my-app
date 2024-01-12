@@ -2,9 +2,7 @@ from app import app
 from flask import render_template, request
 from app.repo.r_kelola import insert_data, delete_data, edit_data, insert_data_faker
 from app.lib import ajaxNormalError, dataTableError, validationError, sf, Validasi
-from faker import Faker
 from flask import jsonify
-
 
 from marshmallow.fields import String, Integer
 from marshmallow.validate import Length, Range
@@ -35,7 +33,6 @@ def insertDataKaryawan():
     return {
         'data': hasil.result
     }
-    
 
 @app.post('/delete_data')
 def deleteDataKaryawan():

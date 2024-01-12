@@ -45,6 +45,8 @@
           </tr>
         </thead>
       </table>
+      <!-- Menampilkan waktu eksekusi load data -->
+<div id="execution-time-load-data" class="text-muted mt-2"></div>
     </div>
   </div>
 </div>
@@ -280,37 +282,51 @@
       });
     });
 
-    // Mengisi data pada tabel data karyawan
-    function fill_tabel_data_dashboard() {
-      const ajax_options = {
-        url: "{{ url_for('dt_caridata') }}",
-        data: {
-          search: $("#search_data_dashboard").val(),
-        },
-      };
-      const dt_options = {
-        columns: [
-          { data: "id" },
-          { data: "name" },
-          { data: "email" },
-          { data: "age" },
-          { data: "address" },
-          {
-            data: null,
-            render: function (data, type, row) {
-              return (
-                '<button class="btn btn-danger btn-sm" onclick="hapusData(' +
-                row.id +
-                ')">Hapus</button>' +
-                '<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal">Edit</button>'
-              );
-            },
+    // Menangkap waktu mulai load data
+  var startTimeLoadData;
+
+  // Mengisi data pada tabel data karyawan
+  function fill_tabel_data_dashboard() {
+    // Menangkap waktu mulai load data
+    startTimeLoadData = new Date().getTime();
+
+    const ajax_options = {
+      url: "{{ url_for('dt_caridata') }}",
+      data: {
+        search: $("#search_data_dashboard").val(),
+      },
+    };
+    const dt_options = {
+      columns: [
+        { data: "id" },
+        { data: "name" },
+        { data: "email" },
+        { data: "age" },
+        { data: "address" },
+        {
+          data: null,
+          render: function (data, type, row) {
+            return (
+              '<button class="btn btn-danger btn-sm" onclick="hapusData(' +
+              row.id +
+              ')">Hapus</button>' +
+              '<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal">Edit</button>'
+            );
           },
-        ],
-      };
-      const id_tabel = "tabel_data_dashboard";
-      dt_server(id_tabel, ajax_options, dt_options);
-    }
+        },
+      ],
+    };
+    const id_tabel = "tabel_data_dashboard";
+    dt_server(id_tabel, ajax_options, dt_options);
+  }
+
+  // Menangkap waktu selesai load data dan menampilkan waktu eksekusi di bawah tabel
+  $('#tabel_data_dashboard').on('xhr.dt', function (e, settings, json, xhr) {
+    var endTimeLoadData = new Date().getTime();
+    var loadDataExecutionTime = (endTimeLoadData - startTimeLoadData) / 60000; // Menghitung waktu dalam menit
+    $("#execution-time-load-data").html("Waktu Load Data: " + loadDataExecutionTime.toFixed(2) + " menit");
+  });
+
 
     // Tambah data karyawan ke dalam table
     $("#tambahForm").submit(function (e) {
